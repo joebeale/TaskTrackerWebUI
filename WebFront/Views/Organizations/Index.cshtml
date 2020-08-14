@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebFront.Models.DTO_Organization>
+@{
+    ViewData["Title"] = "Home Page";    
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>    
+    <TABLE class="table">
+        <TR>
+            <th>
+                SHORT NAME
+            </th>
+            <th>
+                LONG NAME
+            </th>
+            <th>
+                IS ACTIVE
+            </th>
+            <th>
+                PARENT
+            </th>
+            <th>
+                CHILDREN
+            </th>
+        </TR>
+        
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.org_ShortName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.org_LongName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.org_IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parent.org_ShortName)
+        </td>
+        <td>     
+            <ul>
+                @foreach (var kid in item.Children)
+                {
+                   <li> @Html.DisplayFor(modelItem => kid.org_ShortName)</li>
+                }            
+             </ul>
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Update", new { id = item.pkOrgID })
+        </td>
+    </tr>
+        }
+    </TABLE>
+    <div>
+        <a asp-action="Create">Create New Organization</a>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebFront.Models.DTO_Organization>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pkOrgID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.org_ShortName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.org_LongName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.org_IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pkOrgID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.org_ShortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.org_LongName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.org_IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
